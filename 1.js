@@ -1,19 +1,26 @@
-let boolCounter = 0, strCounter = 0, oddCounter = 0, evenCounter = 0, zeroCounter = 0;
 let arr = [4,6,4,5,5,"gfdh","dftg","f",1,true,0,"dfs",5,0];
+let arr2 = [7, 8, 9, "15", null, undefined, 0];
 
-function valueCounter(){
-arr.forEach(function(item, index, array){
-    if(item === true || item === false)
-        boolCounter++;
-    else if(!isNaN(+item) && item != 0)
-        item % 2 == 0 ? evenCounter++ : oddCounter++;
-    else if(item === 0)
-        zeroCounter++;
-    else
-        strCounter++;
-});
+function valueCounter(arr){
+	let boolCounter = 0, strCounter = 0, oddCounter = 0, evenCounter = 0, zeroCounter = 0;
+	arr.forEach(function(item, index, array){
+	    if(item === true || item === false)
+	        boolCounter++;
+	    else if(!isNaN(+item) && item != 0)
+	        item % 2 == 0 ? evenCounter++ : oddCounter++;
+	    else if(item === 0)
+	        zeroCounter++;
+	    else
+	        strCounter++;
+	});
+	console.log(`Логические значения: ${boolCounter}\nСтроки: ${strCounter}\nЧётные числа: ${evenCounter}\nНечётные числа: ${oddCounter}\nНули ${zeroCounter}`);
 }
 
-valueCounter();
+valueCounter(arr);
+valueCounter(arr2);
 
-console.log(`Логические значения: ${boolCounter}\nСтроки: ${strCounter}\nЧётные числа: ${evenCounter}\nНечётные числа: ${oddCounter}\nНули ${zeroCounter}`);
+// Здесь остались те же ошибки, которые были в аналогичном задании предыдущего модуля, перечислять их не буду, т.к. уже написала о них подробно в исправлениях к предыдущему ДЗ 
+// Есть также и ошибка, связанная с добавлением функции: в данном виде функция не имеет смысла, потому что не принимает никаких параметров и не осуществляет никакой вывод. Вы не можете использовать функцию с другим массивом (для этого придётся каждый раз переписывать функцию). Кроме того, если запустить функцию дважды, все значения задвоятся, потому что для подсчета используются переменные в глобальной области видимости. 
+// Основной смысл функций - в автоматизации рутинных действий. Поэтому они должны быть максимально универсальны и уметь работать с разными входными данными, в случае с этой функцией - с разными массивами. 
+// Таким образом, массив, который обрабатывается, должен передаваться в качестве аргумента. Переменные, используемые для подсчета, и вывод результата тоже должны быть частью функции (т.к. это все относится к действиям, которые функция должна выполнять). 
+// Выше исправила на верный вариант, а также добавила пример повторного использования функции. Ошибки из прошлого модуля здесь не исправляла, надеюсь, что вы сделаете это сами в рамках работы над ошибками :)
